@@ -1,10 +1,14 @@
 package com.vastika.demo.test;
 
+import com.vastika.demo.config.SpringConfig;
 import com.vastika.demo.controller.MessageController;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class MessageTest {
     public static void main(String[] args) {
-        MessageController con = new MessageController();
+        ApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
+        MessageController con = context.getBean(MessageController.class);
         con.sendMessage("hello");
     }
 }
